@@ -88,7 +88,7 @@ const transporter = nodemailer.createTransport({
   // Endpoint to send email
   app.post('/send-email', async (req, res) => {
     try {
-      createPdf(req);
+      //createPdf(req);
       console.log(req.body)
       const { to, subject, text } = req.body;
       // const to = req.body.to;
