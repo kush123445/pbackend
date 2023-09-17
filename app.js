@@ -7,13 +7,15 @@ var http = require('http').Server(app);
 const nodemailer = require('nodemailer');
 const express = require('express');
 
-
+const path=require('path')
 const cors = require('cors');
 app.use(cors());
 app.use(express.json());
 
 const paymentRoute = require('./routes/paymentRoute');
 const createPdf = require("./invoice");
+
+app.use(express.static(path.join(__dirname, 'frontend', 'build' )));
 // app.get('/invoice', async(req, res) => {
 //   // Sample invoice data (replace with your actual invoice data)
   
@@ -34,7 +36,7 @@ const createPdf = require("./invoice");
 //   res.render('invoice', { data: invoiceData });
 // });
 
-app.use('/',paymentRoute);
+app.use('/createOrder',paymentRoute);
 
 
 // const invoiceData = {
@@ -88,7 +90,7 @@ const transporter = nodemailer.createTransport({
   // Endpoint to send email
   app.post('/send-email', async (req, res) => {
     try {
-     // createPdf(req);
+      createPdf(req);
       console.log(req.body)
       const { to, subject, text } = req.body;
       // const to = req.body.to;
@@ -105,12 +107,12 @@ const transporter = nodemailer.createTransport({
         to,
         subject,
         text,
-        // attachments: [
-        //   {
-        //     filename: 'Invoice-HomeCure.pdf', // Replace with the desired attachment filename
-        //     path: `./files/${req.body.phone}-${req.body.name}.pdf`, // Replace with the actual path to the attachment file
-        //   },
-        // ]
+        attachments: [
+          {
+            filename: 'Invoice-HomeCure.pdf', // Replace with the desired attachment filename
+            path: `./files/${req.body.phone}-${req.body.name}.pdf`, // Replace with the actual path to the attachment file
+          },
+        ]
       };
   console.log(mailOptions)
       // Send the email
@@ -139,6 +141,10 @@ const transporter = nodemailer.createTransport({
     }
   });
 
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
+  });
+  
 http.listen(8000, function(){
     console.log('Server is running');
 });

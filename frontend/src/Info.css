@@ -1,0 +1,89 @@
+*{
+    margin: 0; padding:0; box-sizing: border-box;
+    font-family: 'Mulish', sans-serif;}
+    .grand_parent{ width: 100vw; height:100vh;
+         color: #fff;}
+    h1{
+        font-size: 4rem;
+        padding: 20px 0;
+        text-align: center;
+        color: #000;
+    }
+    p{
+        text-align: center;
+    }
+    body {
+        overflow-x: hidden;
+      }
+    .parents{ width: 80vw; height: auto; margin: auto;
+        display: flex;  justify-content: space-around;
+        flex-wrap: wrap; transition: all 0.2 linear;
+      
+    }
+    .child{
+        display: flex;
+        height: 350px;
+        /* background:#81ecec; */
+        /* box-shadow: 0 0 20px #bac3c3; */
+        flex:1 1 100%;
+        
+        /* justify-content: space-between;
+        align-items: center; */
+        margin-bottom: 1.9rem;
+        
+
+    }
+    .content{
+        display: flex;
+        flex-direction: column;
+       /* Centers items horizontally */
+        text-align: center;
+        
+  
+        /* max-height: 230px; */
+        overflow-y: auto;
+       
+        
+
+    }
+    .ic{
+        
+            display: grid;
+            place-items: center; /* Centers the item both horizontally and vertically */
+            /* Additional styles for the container if needed */
+           /* Set a height for the container, if necessary */
+            background-image: url('./Images/p.png');
+            /* Scale the image to cover the entire div */
+            background-size: 100% 100%;
+            /* Center the background image within the div */
+            background-position: center center;
+            background-repeat: no-repeat;
+            /* border: 1px solid #ccc; */
+            /* background-color: #000;
+            width:70% */
+           
+          
+    }
+    .ic2{
+        
+        display: grid;
+        place-items: center; /* Centers the item both horizontally and vertically */
+        /* Additional styles for the container if needed */
+       /* Set a height for the container, if necessary */
+         background-image: url('./Images/tester.png');
+        /* Scale the image to cover the entire div */
+        background-size: 100% 100%;
+        /* Center the background image within the div */
+        background-position: center center;
+        background-repeat: no-repeat; 
+        /* background-color: #000; */
+        /* border: 1px solid #ccc; */
+ 
+      
+}
+   
+    @media (max-width: 768px){
+      .ic{  background-size: 100% 50%; }
+      .ic2{  background-size: 100% 50%; }
+    }
+    
