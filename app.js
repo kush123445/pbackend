@@ -90,7 +90,7 @@ const transporter = nodemailer.createTransport({
   // Endpoint to send email
   app.post('/send-email', async (req, res) => {
     try {
-      createPdf(req);
+     // createPdf(req);
       console.log(req.body)
       const { to, subject, text } = req.body;
       // const to = req.body.to;
@@ -107,12 +107,12 @@ const transporter = nodemailer.createTransport({
         to,
         subject,
         text,
-        attachments: [
-          {
-            filename: 'Invoice-HomeCure.pdf', // Replace with the desired attachment filename
-            path: `./files/${req.body.phone}-${req.body.name}.pdf`, // Replace with the actual path to the attachment file
-          },
-        ]
+        // attachments: [
+        //   {
+        //     filename: 'Invoice-HomeCure.pdf', // Replace with the desired attachment filename
+        //     path: `./files/${req.body.phone}-${req.body.name}.pdf`, // Replace with the actual path to the attachment file
+        //   },
+        // ]
       };
   console.log(mailOptions)
       // Send the email
